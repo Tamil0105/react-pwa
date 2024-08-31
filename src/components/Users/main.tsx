@@ -114,7 +114,7 @@ const UsersCard: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center md:flex sm:grid justify-between md:gap-0 gap-2">
           <Dropdown
             options={[ "Active", "InActive"]}
-            width={200}
+            className="w-52"
             onSelect={(e) => setIsActive(e=="Active"?true:false)}
             activeOption={isActive?"Active":"InActive"}
           />

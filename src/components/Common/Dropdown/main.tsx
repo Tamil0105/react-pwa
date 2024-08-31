@@ -8,12 +8,14 @@ interface DropdownProps {
   onSelect: (option: string) => void;
   activeOption: string;
   width?: number;
+  className?:string
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   options,
   width,
   label,
+  className,
   onSelect,
   activeOption,
 }) => {
@@ -51,8 +53,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <div
       ref={dropdownRef}
-      style={{ width: width }}
-      className={cn("relative z-20 top-0 inline-block text-left")}
+      // style={{ width: width }}
+      className={cn("relative w-7 z-50 top-0 inline-block text-left",className)}
     >
       <div>
         <button

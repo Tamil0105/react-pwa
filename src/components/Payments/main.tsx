@@ -11,6 +11,7 @@ import { Popup } from "../Common/Popup/main";
 import PaymentForm from "../Popups/payments";
 import { PaymentsStore } from "../../Store/PagesStore/payments";
 import { BsPlus } from "react-icons/bs";
+import DeletePopup from "../Popups/deletePopup";
 
 interface PaymentInfo {
   propertyName: string;
@@ -45,7 +46,8 @@ const PaymentCard: React.FC = () => {
   const { sidebarAction, sidebartrigger } = TriggerStore((state) => state);
   const { addPayment, deletePayment, editPayment, payments } =
     PaymentsStore((state) => state);
-
+    const [DeletPopup, setDeletPopup] = useState(false);
+    const [activeId, setActiveId] = useState("");
   const [openPopup, setOpenPopup] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [dateFilter, setDateFilter] = useState<{ startDate: string; endDate: string }>({
@@ -73,8 +75,9 @@ const PaymentCard: React.FC = () => {
     setOpenPopup(true);
   };
 
-  const handleDelete = (propertyID: string) => {
-    deletePayment(propertyID);
+  const handleDelete = () => {
+    deletePayment(activeId);
+    setDeletPopup(false)
   };
 
   const handleSubmit = (formData: PaymentInfo) => {
@@ -165,7 +168,7 @@ const PaymentCard: React.FC = () => {
             ...item,
             actions: (
               <EditAndDeleteButton
-                onDelete={() => handleDelete(item.paymentId)}
+                onDelete={() => {setDeletPopup(true);setActiveId(item.paymentId)}}
                 onEdit={() => handleEdit(item)}
               />
             ),
@@ -197,6 +200,18 @@ const PaymentCard: React.FC = () => {
           onClose={() => setOpenPopup(false)}
         />
       )}
+       {DeletPopup ? (
+        <Popup
+          children={
+            <DeletePopup
+              isOpen={DeletPopup}
+              onClose={() => setDeletPopup(false)}
+              onDelete={handleDelete}
+            />
+          }
+          onClose={() => setDeletPopup(false)}
+        />
+      ) : null}
     </div>
   );
 };

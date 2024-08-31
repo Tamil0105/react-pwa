@@ -111,7 +111,7 @@ const PropertiesCard: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center md:flex sm:grid justify-between md:gap-0 gap-2">
           <Dropdown
             options={["All", "Active", "Inactive"]}
-            width={200}
+            className="w-52"
             onSelect={(e) => setIsActive(e)}
             activeOption={isActive}
           />

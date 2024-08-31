@@ -332,8 +332,7 @@ const TenantForm: React.FC<TenantFormProps> = ({
               options={["Paid", "Unpaid"]}
               onSelect={(e: any) => setFormData({ ...formData, rentStatus: e })}
               activeOption={formData?.rentStatus}
-              width={305}
-            />
+              className=" w-[100%]"            />
             {errors?.rentStatus && (
               <p className="text-red-500 text-xs italic">
                 {errors?.rentStatus}
@@ -428,19 +427,19 @@ const TenantForm: React.FC<TenantFormProps> = ({
             className="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none p-2 focus:shadow-outline"
           />
         </div>
-        <div className="flex justify-end mt-6 space-x-4">
+        <div className="flex flex-col sm:flex-row justify-end mt-4 space-y-2 sm:space-y-0 sm:space-x-4">
+          <button
+            type="submit"
+            className="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Save
+          </button>
           <button
             type="button"
             onClick={onCancel}
-            className="bg-gray-300 text-gray-700 hover:bg-gray-400 px-4 py-2 rounded-lg"
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Cancel
-          </button>
-          <button
-            type="submit"
-            className="bg-primary text-white hover:bg-secondary px-4 py-2 rounded-lg"
-          >
-            Submit
           </button>
         </div>
       </form>

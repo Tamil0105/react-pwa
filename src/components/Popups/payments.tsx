@@ -121,6 +121,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               Payment Status
             </label>
             <Dropdown
+            className=" w-[100%]"
               options={["Paid", "Pending"]}
               onSelect={(e: any) => setFormData({ ...formData, paymentStatus: e })}
               activeOption={formData?.paymentStatus}
@@ -193,8 +194,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               options={["Cash", "Credit Card", "Bank Transfer"]}
               onSelect={(e: any) => setFormData({ ...formData, paymentMode: e })}
               activeOption={formData?.paymentMode}
-              width={305}
-            />
+              className=" w-[100%]"            />
             {errors?.paymentMode && <p className="text-red-500 text-xs italic">{errors?.paymentMode}</p>}
           </div>
         
@@ -211,22 +211,20 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-        <div className="flex flex-col sm:flex-row justify-end mt-4 space-y-2 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row justify-end mt-4 space-y-2 sm:space-y-0 sm:space-x-4">
           <button
             type="submit"
             className="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Submit
+            Save
           </button>
-          {onCancel && (
-            <button
-              type="button"
-              onClick={onCancel}
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Cancel
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

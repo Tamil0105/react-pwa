@@ -115,22 +115,11 @@ const PropertyForm: React.FC<PropertyFormProps> = ({
               options={["Occupied", "Unoccupied"]}
               onSelect={(e: any) => setFormData({ ...formData, propertyStatus: e })}
               activeOption={formData?.propertyStatus}
-              width={305} // Increased width
+            className=" w-[100%]"
             />
             {errors?.propertyStatus && <p className="text-red-500 text-xs italic">{errors?.propertyStatus}</p>}
           </div>
-          <div className="flex flex-col gap-3">
-            <label htmlFor="propertyType" className="text-sm text-gray-700 font-bold flex items-center">
-              <FaHome className="text-yellow-500 h-6 w-6 mr-2" /> Property Type
-            </label>
-            <Dropdown
-              options={["Residential", "Commercial"]}
-              onSelect={(e: any) => setFormData({ ...formData, propertyType: e })}
-              activeOption={formData?.propertyType}
-              width={305} // Increased width
-            />
-            {errors?.propertyType && <p className="text-red-500 text-xs italic">{errors?.propertyType}</p>}
-          </div>
+          
           <div className="flex flex-col gap-3">
             <label htmlFor="propertyAddress" className="text-sm text-gray-700 font-bold flex items-center">
               <FaRegAddressBook className="text-purple-500 h-6 w-6 mr-2" /> Property Address
@@ -142,6 +131,18 @@ const PropertyForm: React.FC<PropertyFormProps> = ({
               className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
             {errors?.propertyAddress && <p className="text-red-500 text-xs italic">{errors?.propertyAddress}</p>}
+          </div>
+          <div className="flex flex-col gap-3">
+            <label htmlFor="propertyType" className="text-sm text-gray-700 font-bold flex items-center">
+              <FaHome className="text-yellow-500 h-6 w-6 mr-2" /> Property Type
+            </label>
+            <Dropdown
+              options={["Residential", "Commercial"]}
+              onSelect={(e: any) => setFormData({ ...formData, propertyType: e })}
+              activeOption={formData?.propertyType}
+            className=" w-[100%]"
+            />
+            {errors?.propertyType && <p className="text-red-500 text-xs italic">{errors?.propertyType}</p>}
           </div>
           <div className="flex flex-col gap-3">
             <label htmlFor="rentAmount" className="text-sm text-gray-700 font-bold flex items-center">
@@ -207,21 +208,19 @@ const PropertyForm: React.FC<PropertyFormProps> = ({
             />
           </div>
         </div>
-        <div className="flex justify-end gap-4">
-          {onCancel && (
-            <button
-              type="button"
-              onClick={onCancel}
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Cancel
-            </button>
-          )}
+        <div className="flex flex-col sm:flex-row justify-end mt-4 space-y-2 sm:space-y-0 sm:space-x-4">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Submit
+            Save
+          </button>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Cancel
           </button>
         </div>
       </form>

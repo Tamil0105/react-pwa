@@ -85,7 +85,7 @@ const Pagination: React.FC<Props> = ({ data, ExportFunction }) => {
   };
 
   return (
-    <div className="flex items-center justify-between scrollbar scrollbar overflow-x-auto p-4 bg-gray-50">
+    <div className="flex items-center md:gap-0 gap-2 justify-between scrollbar scrollbar overflow-x-auto p-4 bg-gray-50">
       <div className="flex items-start space-x-2">
         <span className="text-gray-700 hidden md:inline">Items per page:</span>
         <select className="border border-gray-300 rounded-md py-1 px-2 text-gray-700 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary">
@@ -97,25 +97,32 @@ const Pagination: React.FC<Props> = ({ data, ExportFunction }) => {
       {ExportFunction ? (
         <div className="flex items-center space-x-2">
           <button
+          title="Export PDF"
             onClick={handleExportPDF}
             className="flex items-center px-3 py-1 text-gray-700 bg-gray-200 rounded-md hover:bg-red-50  focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <FaFilePdf className="mr-1 text-red-600" />
-            PDF
+            
+            <span className="md:visible hidden">PDF</span>
           </button>
           <button
+                    title="Export Excel"
+
             onClick={handleExportExcel}
             className="flex items-center px-3 py-1 text-gray-700 bg-gray-200 rounded-md hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <FaFileExcel className="mr-1 text-green-600" />
-            Excel
+            <span className="md:visible hidden">Excel</span>
           </button>
           <button
+                    title="Print "
+
             onClick={handlePrint}
             className="flex items-center px-3 py-1 text-gray-700 bg-gray-200 rounded-md hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <FaPrint className="mr-1 text-blue-500" />
-            Print
+            <span className="md:visible hidden">Print</span>
+            
           </button>
         </div>
       ) : null}
