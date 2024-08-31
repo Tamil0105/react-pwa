@@ -1,13 +1,9 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink,  } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
-import { FiHelpCircle } from "react-icons/fi";
-import { RiSettings3Fill } from "react-icons/ri";
 import { cn } from "../../../utils/constants/cn";
 import { SidebarUpContent } from "../../../Objects/main";
 import { TriggerStore } from "../../../Store";
-
-export const Sidebar = ({}) => {
+export const Sidebar = () => {
   const store = TriggerStore((state) => state);
 
   const {setSideAction,sidebarAction} = TriggerStore((state) => state)
@@ -21,11 +17,11 @@ export const Sidebar = ({}) => {
 
 
 
-  const routeChange = () => {
-  	// EventCreation_store.resetStore();
-  	// StepStore.resetStore();
-  	store.setSideAction(false);
-  };
+//   const routeChange = () => {
+//   	// EventCreation_store.resetStore();
+//   	// StepStore.resetStore();
+//   	store.setSideAction(false);
+//   };
   return (
     <div
       className={cn(
@@ -35,9 +31,9 @@ export const Sidebar = ({}) => {
     >
       <div className={cn("flex flex-col  gap-8 py-2   mt-12 md:mt-0  rounded-xl lg:justify-center", !sidebarAction?"lg:border":"")}>
         {SidebarUpContent.map((list: any) => {
-          const isActive =
-           ( list.urlRoots as any)?.includes((location as any).pathname) ||
-		   ( list.urlRoots as any)?.includes((location as any).pathname.split("/")?.[1]);
+          const isActive = 
+           ( list.urlRoots as any)?.includes((window.location as any).pathname) ||
+		   ( list.urlRoots as any)?.includes((window.location as any).pathname.split("/")?.[1]);
 
           return (
             <Link
@@ -54,9 +50,9 @@ export const Sidebar = ({}) => {
               onClick={() => {
 				store.setSideTrigger(false)
 
-              	list.url === '/dashboard'
-              		? routeChange()
-              		: null;
+              	// list?.url === '/dashboard'
+              	// 	? routeChange()
+              	// 	: null;
               }}
             >
               <div className="transform transition duration-200 group-hover:scale-125">
