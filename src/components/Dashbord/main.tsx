@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Pie, Bar } from "react-chartjs-2";
+import {Popup,SearchInput} from "react-components-sts"
 import {
   Chart as ChartJS,
   ArcElement,
@@ -73,7 +74,7 @@ const Properties: React.FC<PropertiesDataType> = ({ Data }) => {
         className="flex transition-transform duration-300 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {data.map((item, index) => (
+      {data.map((item, index) => (
           <div
             key={index}
             className="min-w-full h-full flex items-center justify-center rounded-lg"
@@ -278,6 +279,7 @@ function Dashboard() {
           <BalanceAmount />
         </div>
       </div>
+      {/* <Popup  closeButton={true} onClose={() =>{}} children={<p>sss</p>}/> */}
     </div>
   );
 }

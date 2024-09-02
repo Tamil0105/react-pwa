@@ -6,10 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#09ba36',
-        secondary: '#057521',
+        primary: '#23108f',
+        secondary: '#12074f',
         accent: '#38c172',
-        hoverLight:"#defad7",
+        hoverLight:"#ebe9f7",
         dark: '#2d3748',
         light: '#f7fafc',
       },
